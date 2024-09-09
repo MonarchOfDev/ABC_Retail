@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Cart>
+
+@{
+    ViewData["Title"] = "Cart";
+    var image = "";
+    int total = 0;
+    int total_prod = 0;
+    int total_Q = 0;
+
+
+}
+
+<h1>Cart Items</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Product Price
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            image = @item.Product_id + ".jpg";
+            <tr>
+                <td>
+                    <span><img src="~/Images/@image" height="100px" class="" alt="Artwork 1"></span>
+                </td>
+                <td>
+                    <strong><span style="font-size:larger">@Html.DisplayFor(modelItem => item.Products.Product_name)</span></strong>
+                </td>
+                <td>
+                    <strong><span style="font-size:larger">R @Html.DisplayFor(modelItem => item.Products.Price)</span></strong>
+
+                    <span hidden>
+                        @{
+                            total_prod = item.Products.Price; 
+                            total_Q = item.Quantity;
+
+                            total += (total_prod * total_Q);
+                        }
+                    </span>
+                </td>
+
+            </tr>
+        }
+        <tr>
+            <td>
+                <br />
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <span style="font-weight:bolder;">Check Out Total:</span>
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                <span style="font-weight:bolder;">R @total</span>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+@foreach (var item in Model)
+{
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-info" style="font-weight:bolder;" asp-action="Check_Purchase" asp-route-id="@item.Customer_id" asp-route-price="@total">Confirm Purchase</a>
+    </div>
+    break;
+}
