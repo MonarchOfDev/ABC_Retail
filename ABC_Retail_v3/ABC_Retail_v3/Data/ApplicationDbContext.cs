@@ -10,7 +10,7 @@ namespace ABC_Retail_v3.Data
         {
 
         }
-        public DbSet<Craft_Users> Craft_Users { get; set; }
+        public DbSet<CraftUsers> Craft_Users { get; set; }
         public DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Products> Products { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }

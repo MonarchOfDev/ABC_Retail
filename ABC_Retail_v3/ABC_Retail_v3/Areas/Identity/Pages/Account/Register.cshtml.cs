@@ -10,12 +10,15 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using ABC_Retail_v3.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
@@ -29,13 +32,15 @@ namespace ABC_Retail_v3.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -43,6 +48,7 @@ namespace ABC_Retail_v3.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
         /// <summary>
@@ -74,9 +80,22 @@ namespace ABC_Retail_v3.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            [Display(Name = "First Name")]
+            [Required(ErrorMessage = "First Name is requred")]
+            [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Please enter a Firstname, No Numbers allowed")]
+            [StringLength(35, MinimumLength = 3, ErrorMessage = "First name should be between 3 and 35 characters")]
+            public string Firstname { get; set; }
+
+            [Display(Name = "Surname")]
+            [Required(ErrorMessage = "Surname is requred")]
+            [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Please enter a Surname, No Numbers allowed")]
+            [StringLength(35, MinimumLength = 3, ErrorMessage = "Second name should be between 3 and 35 characters")]
+            public string Lastname { get; set; }
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
+            [StringLength(255, MinimumLength = 12, ErrorMessage = "Second name should be between 12 and 255 characters")]
             public string Email { get; set; }
 
             /// <summary>
@@ -85,6 +104,7 @@ namespace ABC_Retail_v3.Areas.Identity.Pages.Account
             /// </summary>
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$", ErrorMessage = "Password must be between 6 and 20 characters and contain one uppercase letter, one lowercase letter, one digit and one special character.")]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
@@ -97,6 +117,12 @@ namespace ABC_Retail_v3.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            public string? Role { get; set; }
+
+            [ValidateNever]
+
+            public IEnumerable<SelectListItem> RoleList { get; set; }
         }
 
 
@@ -154,11 +180,11 @@ namespace ABC_Retail_v3.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private IdentityUser CreateUser()
+        private ApplicationUser CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<IdentityUser>();
+                return Activator.CreateInstance<ApplicationUser>();
             }
             catch
             {
