@@ -13,7 +13,7 @@ namespace ABC_Retail_v3.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Customer_id { set; get; }
+        public int CustomerId { set; get; }
 
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "First Name is requred")]
@@ -31,6 +31,7 @@ namespace ABC_Retail_v3.Models
         [Display(Name = "Email")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
+        public string Password { get; set; }
 
         public DateTime? Creation_date { set; get; } = DateTime.Now;
 

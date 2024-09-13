@@ -37,7 +37,7 @@
                         @* <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="AppRoles" asp-action="Index" style="height:60px;padding-top:18px;color:black;">Roles</a>
                         </li>  *@
-                        @if (@User.IsInRole("Customer"))
+@*                         @if (@User.IsInRole("Customer"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Our_Work" style="height:60px;padding-top:18px;color:black;">Our Work</a>
@@ -49,7 +49,10 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="AppRoles" asp-action="Index" style="height:60px;padding-top:18px;color:black;">Roles</a>
                             </li>
-                        }
+                        } *@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="UploadProductImage" style="height:60px;padding-top:18px;color:black;">Upload Product Image</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact_Us" style="height:60px;padding-top:18px;color:black;">Contact Us</a>
                         </li>
@@ -59,7 +62,6 @@
                     </ul>
                 </div>
             </div>
-            <partial name="_LoginPartial" />
         </nav>
     </header>
     <div class="container">

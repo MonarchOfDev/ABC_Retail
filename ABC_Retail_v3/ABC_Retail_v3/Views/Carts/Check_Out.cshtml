@@ -27,7 +27,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            image = @item.Product_id + ".jpg";
+            image = @item.ProductId + ".jpg";
             <tr>
                 <td>
                     <span><img src="~/Images/@image" height="100px" class="" alt="Artwork 1"></span>
@@ -80,7 +80,7 @@
 @foreach (var item in Model)
 {
     <div class="d-flex justify-content-end">
-        <a class="btn btn-info" style="font-weight:bolder;" asp-action="Check_Purchase" asp-route-id="@item.Customer_id" asp-route-price="@total">Confirm Purchase</a>
+        <a class="btn btn-info" style="font-weight:bolder;" asp-action="Check_Purchase" asp-route-id="@item.CustomerId" asp-route-price="@total">Confirm Purchase</a>
     </div>
     break;
 }

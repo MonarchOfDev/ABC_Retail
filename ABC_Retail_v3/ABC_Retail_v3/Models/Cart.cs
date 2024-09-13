@@ -16,12 +16,12 @@ namespace ABC_Retail_v3.Models
 
         // Foreign key to Customers
         [ForeignKey("Customers")]
-        public int Customer_id { set; get; }
+        public int CustomerId { set; get; }
         public virtual Customers? Customers { get; set; }
 
         // Foreign key to Products
         [ForeignKey("Products")]
-        public int Product_id { get; set; }
+        public int ProductId { get; set; }
         public virtual Products Products { get; set; }
 
         public int Quantity { get; set; }

@@ -1,34 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
+﻿using System.ComponentModel.DataAnnotations;
+using Azure;
+using Azure.Data.Tables;
 
 namespace ABC_Retail_v3.Models
 {
-    public class Transactions
+    public class Transactions : ITableEntity
     {
+        // Implement PartitionKey and RowKey
+        public string PartitionKey { get; set; }
+        public string RowKey { get; set; }
+        public DateTimeOffset? Timestamp { get; set; }
+        public ETag ETag { get; set; }
+
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Transaction_id { set; get; }
-        // Foreign key to Products
-        [ForeignKey("Cart")]
-        public int CartId { set; get; }
+        public int TransactionId { get; set; }
+        public int CartId { get; set; }
         public virtual Cart Cart { get; set; }
-        public DateTime Purchase_date { set; get; } = DateTime.Now;
-        [Display(Name = "Product Price")]
-        public double Price { set; get; }
-        // Foreign key to Products
-        [ForeignKey("Products")]
-        public int Product_id { get; set; }
+        public DateTime PurchaseDate { get; set; } = DateTime.Now;
+        public double Price { get; set; }
+        public int ProductId { get; set; }
         public virtual Products Product { get; set; }
-        // Foreign key to Users
-        [ForeignKey("Users")]
-        public int Customer_id { set; get; }
+        public int CustomerId { get; set; }
         public virtual Customers Customers { get; set; }
-        public string Order_Status { set; get; }
+
+        public string OrderStatus { get; set; }
+        public string ProductName { get; set; }
+        public string CustomerName { get; set; }
+
+        // Constructor to initialize the PartitionKey and RowKey
+        public Transactions()
+        {
+            // Example: Partition by CustomerId and RowKey by TransactionId or a GUID
+            PartitionKey = TransactionId.ToString();
+            RowKey = Guid.NewGuid().ToString();
+        }
     }
 }

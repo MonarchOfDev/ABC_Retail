@@ -1,40 +1,32 @@
-﻿//using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Collections.Generic;
+﻿using Azure;
+using Azure.Data.Tables;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ABC_Retail_v3.Models
 {
-    public class Products
+    public class Products : ITableEntity
     {
+        // Implement PartitionKey and RowKey
+        public string PartitionKey { get; set; }
+        public string RowKey { get; set; }
+
+        public DateTimeOffset? Timestamp { get; set; }
+        public ETag ETag { get; set; }
+
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Product_id { set; get; }
+        public int ProductId { get; set; }   
+        public string Product_name { get; set; }
+        public int Price { get; set; }
+        public string Category { get; set; }
+        public int Stock_count { get; set; }
+        public string Availability { get; set; }
 
-        [Display(Name = "Product Name")]
-        [StringLength(50)]
-        public string Product_name { set; get; }
-
-        [Display(Name = "Product Price")]
-        public int Price { set; get; }
-
-        [Display(Name = "Product Category")]
-        [StringLength(50)]
-        public string Category { set; get; }
-
-        [Display(Name = "Product Ctock_count")]
-        public int Stock_count { set; get; }
-
-        [Display(Name = "Product availability")]
-        [StringLength(50)]
-        public string availability { set; get; }
-        public virtual ICollection<Cart> Cart { get; set; }
-        public virtual ICollection<Transactions> Transactions { get; set; }
-
+        // Constructor to initialize the PartitionKey and RowKey
+        public Products()
+        {
+            // Example: Partition by Category and RowKey by ProductId or a unique identifier
+            PartitionKey = ProductId.ToString();
+            RowKey = Guid.NewGuid().ToString();   
+        }
     }
 }

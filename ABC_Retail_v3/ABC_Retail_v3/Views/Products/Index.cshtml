@@ -25,7 +25,7 @@
                 @Html.DisplayNameFor(model => model.Stock_count)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.availability)
+                @Html.DisplayNameFor(model => model.Availability)
             </th>
             <th></th>
         </tr>
@@ -46,12 +46,12 @@
                 @Html.DisplayFor(modelItem => item.Stock_count)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.availability)
+                @Html.DisplayFor(modelItem => item.Availability)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Product_id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Product_id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Product_id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
             </td>
         </tr>
 }

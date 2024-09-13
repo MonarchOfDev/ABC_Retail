@@ -13,22 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Cart)
+                @Html.DisplayNameFor(model => model.CartId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Purchase_date)
+                @Html.DisplayNameFor(model => model.PurchaseDate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product)
+                @Html.DisplayNameFor(model => model.ProductName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customers)
+                @Html.DisplayNameFor(model => model.CustomerName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Order_Status)
+                @Html.DisplayNameFor(model => model.OrderStatus)
             </th>
             <th></th>
         </tr>
@@ -37,27 +37,27 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Cart.CartId)
+                    @Html.DisplayFor(modelItem => item.CartId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Purchase_date)
+                    @Html.DisplayFor(modelItem => item.PurchaseDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
+                    @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Product.Product_id)
+                    @Html.DisplayFor(modelItem => item.ProductName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Customers.Email)
+                    @Html.DisplayFor(modelItem => item.CustomerName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Order_Status)
+                    @Html.DisplayFor(modelItem => item.OrderStatus)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Transaction_id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Transaction_id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Transaction_id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.TransactionId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TransactionId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TransactionId">Delete</a>
             </td>
         </tr>
 }

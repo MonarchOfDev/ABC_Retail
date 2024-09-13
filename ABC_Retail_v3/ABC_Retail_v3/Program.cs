@@ -1,12 +1,13 @@
-using ABC_Retail_v3.Data;
-using Microsoft.AspNetCore.Identity;
+using ABC_Retail_v3.AzureBlobService.Interface;
+using ABC_Retail_v3.AzureBlobService.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.AzureAppServices;
 using Microsoft.Extensions.Logging.ApplicationInsights;
 using Microsoft.Extensions.Azure;
 using Azure.Storage.Files;
-using Microsoft.Azure.Cosmos.Table;
-
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Table;
+using Azure.Data.Tables;
 
 namespace ABC_Retail_v3
 {
@@ -17,22 +18,16 @@ namespace ABC_Retail_v3
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            //builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(connectionString));
-            
-                var storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=abcdb;AccountKey=9s2Ze/6LC3CqZC6POmRyAlk2sh9xT0dQxwRJq9sKHbaDaVo1FEA1D1KhTIqxjS6+y6N1wBOZ6Hv4+AStlA4TUw==;EndpointSuffix=core.windows.net");
-            var tableClient = storageAccount.CreateCloudTableClient(new TableClientConfiguration());
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(storageAccount));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
-            builder.Services.AddDefaultIdentity<IdentityUser>().AddDefaultTokenProviders()
-            .AddRoles<IdentityRole>()
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddSingleton(x =>
+            new TableServiceClient(builder.Configuration.GetConnectionString("AzureTableStorage")));
+
+            builder.Services.AddSingleton<IBlobStorageService>(sp =>
+            {
+                var connectionString = builder.Configuration.GetConnectionString("BlobStorage");
+                return new BlobStorageService(connectionString);
+            });
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddDistributedMemoryCache();
@@ -54,11 +49,7 @@ namespace ABC_Retail_v3
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseMigrationsEndPoint();
-            }
-            else
+            if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
@@ -74,8 +65,7 @@ namespace ABC_Retail_v3
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-            app.MapRazorPages();
+                pattern: "{controller=Account}/{action=Login}/{id?}");
 
             app.Run();
         }

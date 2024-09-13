@@ -18,7 +18,7 @@
     </head>
 <body>
 
-<form>
+<form hidden>
         <div class="d-flex align-items-end flex-column" style="margin-top: 10px;">
             <div class="d-flex">
                 <input class="form-control" type="text" name="search" />&nbsp;
@@ -37,14 +37,14 @@
                 {
                     foreach (var item in Model)
                     {
-                        image = @item.Product_id + ".jpg";
+                        image = "https://abcdb.blob.core.windows.net/productimages?sp=r&st=2024-09-12T15:56:28Z&se=2024-12-30T23:56:28Z&sv=2022-11-02&sr=c&sig=3jwORaWePiCC8sQyXvIu8AFPfv8ygCSWozM7wXAk0Is%3D/" + @item.ProductId + ".jpg";
                         <div class="col-md-3 mb-4">
                             <div class="card">
-                                <img src="~/Images/@image" class="card-img-top" alt="Artwork 1">
+                                <img src="@image" class="card-img-top" alt="Artwork 1">
                                 <div class="card-body">
                                     <h5 class="card-title">@item.Product_name</h5>
                                     <p class="card-title">R @item.Price</p>
-                                    <button asp-route-id="@item.Product_id" class="btn btn-primary"> Add To Cart</button>
+                                    <button asp-route-id="@item.ProductId" class="btn btn-primary"> Add To Cart</button>
                                 </div>
                             </div>
                         </div>
