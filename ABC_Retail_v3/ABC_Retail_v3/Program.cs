@@ -8,6 +8,16 @@ using Azure.Storage.Files;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using Azure.Data.Tables;
+using ABC_Retail_v3.AzureStorageService.Interface;
+using ABC_Retail_v3.AzureStorageService.Service;
+using ABC_Retail_v3.AzureQueueService.Interface;
+using ABC_Retail_v3.AzureQueueService.Service;
+using ABC_Retail_v3.AzureTableService.Interface;
+using ABC_Retail_v3.AzureTableService.Service;
+using System.Configuration;
+using ABC_Retail_v3.Models;
+using Microsoft.AspNetCore.Identity;
+using ABC_Retail_v3.Services;
 
 namespace ABC_Retail_v3
 {
@@ -23,13 +33,30 @@ namespace ABC_Retail_v3
             builder.Services.AddSingleton(x =>
             new TableServiceClient(builder.Configuration.GetConnectionString("AzureTableStorage")));
 
+            builder.Services.AddSingleton<ITableStorageService<CraftUsers>>(provider =>
+            new TableStorageService<CraftUsers>(
+                builder.Configuration.GetConnectionString("AzureTableStorage"),
+                "CraftUsers"));
+
             builder.Services.AddSingleton<IBlobStorageService>(sp =>
             {
-                var connectionString = builder.Configuration.GetConnectionString("BlobStorage");
+                var connectionString = builder.Configuration.GetConnectionString("AzureBlobStorage");
                 return new BlobStorageService(connectionString);
             });
 
+            builder.Services.AddSingleton<IFileStorageService>(sp =>
+            {
+                var connectionString = builder.Configuration.GetConnectionString("AzureFilesStorage");
+                return new FileStorageService(connectionString);
+            });
+            builder.Services.AddSingleton<IQueueStorageService>(provider =>
+            new QueueStorageService(builder.Configuration.GetConnectionString("AzureQueueStorage"), "registeruser"));
+            builder.Services.AddSingleton(typeof(ITableStorageService<>), typeof(TableStorageService<>));
+            builder.Services.AddScoped<IPasswordHasher<CraftUsers>, PasswordHasher<CraftUsers>>();
+
             builder.Services.AddControllersWithViews();
+            builder.Services.AddHttpClient();
+            builder.Services.AddScoped<AzureFunctionService>();
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(options =>
             {

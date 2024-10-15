@@ -22,12 +22,12 @@
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
-                    <input asp-for="Name" class="form-control" autocomplete="Firstname" aria-required="true" placeholder="Bob" />
+                    <input asp-for="Name" class="form-control" autocomplete="name" aria-required="true" placeholder="Bob" />
                 <label asp-for="Name">Firstname</label>
                     <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                    <input asp-for="Surname" class="form-control" autocomplete="Lastname" aria-required="true" placeholder="Stones" />
+                    <input asp-for="Surname" class="form-control" autocomplete="surname" aria-required="true" placeholder="Stones" />
                     <label asp-for="Surname">Surname</label>
                     <span asp-validation-for="Surname" class="text-danger"></span>
             </div>

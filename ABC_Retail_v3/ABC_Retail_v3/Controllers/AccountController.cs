@@ -1,37 +1,51 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ABC_Retail_v3.Models;
+using Azure.Data.Tables;
+using ABC_Retail_v3.AzureTableService.Interface;
+using Microsoft.AspNetCore.Identity;
+using ABC_Retail_v3.Services;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using ABC_Retail_v3.Models;
-using Microsoft.WindowsAzure.Storage.Table;
-using Microsoft.WindowsAzure.Storage;
-using WindowsAzure.Table.Extensions;
-using Azure;
-using Azure.Data.Tables;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Azure.Documents;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
-using System.Web.Helpers;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ABC_Retail_v3.Controllers
 {
     public class AccountController : Controller
     {
         private readonly TableServiceClient _tableServiceClient;
+        private readonly ITableStorageService<CraftUsers> _tableStorageService;
         private readonly ILogger<AccountController> _accountLogger;
+        private readonly IPasswordHasher<CraftUsers> _passwordHasher;
+        private readonly AzureFunctionService _azureFunctionService;
 
-        public AccountController(ILogger<AccountController> logger, TableServiceClient tableServiceClient)
+        public AccountController(ILogger<AccountController> logger
+            , TableServiceClient tableServiceClient
+            , ITableStorageService<CraftUsers> tableStorageService,
+            IPasswordHasher<CraftUsers> passwordHasher,
+            AzureFunctionService azureFunctionService)
         {
-           
+
+
+            _azureFunctionService = azureFunctionService;
             _tableServiceClient = tableServiceClient;
+            _tableStorageService = tableStorageService;
             _accountLogger = logger;
+            _passwordHasher = passwordHasher;
 
         }
 
         [HttpGet]
         public IActionResult Register()
         {
+            //var model = new CraftUsers
+            //{
+            //    RoleList = GetRoleList()
+            //};
+            //return View(model);
             return View();
         }
 
@@ -41,46 +55,48 @@ namespace ABC_Retail_v3.Controllers
             await tableClient.CreateIfNotExistsAsync();
         }
 
+
         [HttpPost]
         public async Task<IActionResult> Register(CraftUsers model)
         {
-            CreateTableAsync("CraftUsers");
-            var tableClient = _tableServiceClient.GetTableClient("CraftUsers");
-
-            model.PartitionKey = model.Email;
-
             if (ModelState.IsValid)
             {
-                string hashedPassword = Crypto.HashPassword(model.Password);
-                var craftUser = new CraftUsers()
-                {
-                    PartitionKey = model.Email,
-                    Name = model.Name,
-                    Surname = model.Surname,
-                    Email = model.Email,
-                    Password = hashedPassword 
-                };
-
-
                 try
                 {
-                    await tableClient.AddEntityAsync(craftUser);
-                    _accountLogger.LogInformation("New User Registered");
+                    // Validate user data
+                    model.ValidateUser();
+
+                    // Hash the password using ASP.NET Core's PasswordHasher
+                    model.Password = _passwordHasher.HashPassword(model, model.Password);
+                    model.ConfirmPassword = null; // Clear confirm password
+
+                    // Call Azure Function to store user in Table Storage
+                    var storeUserResult = await _azureFunctionService.StoreUserAsync(model);
+                    _accountLogger.LogInformation($"User {model.Email} stored via Azure Function.");
+
+                    // Optionally, enqueue a transaction message
+                    var transaction = new
+                    {
+                        Email = model.Email,
+                        Action = "Register",
+                        Timestamp = DateTime.UtcNow
+                    };
+                    var enqueueResult = await _azureFunctionService.AddToQueueAsync(transaction);
+                    _accountLogger.LogInformation($"Transaction enqueued for user {model.Email}.");
 
                     return RedirectToAction("Our_Work", "Home");
                 }
-                catch (StorageException ex)
+                catch (HttpRequestException ex)
                 {
-                    Console.WriteLine($"Error code: {ex.RequestInformation.HttpStatusCode}");
-                    Console.WriteLine($"Error message: {ex.Message}");
-                    if (ex.RequestInformation.ExtendedErrorInformation != null)
-                    {
-                        Console.WriteLine($"Request URL: {ex.RequestInformation.ExtendedErrorInformation.ErrorMessage}");
-                    }
-                    ModelState.AddModelError("", "An error occurred while saving your profile. Please try again.");
+                    _accountLogger.LogError($"HTTP Request error: {ex.Message}");
+                    ModelState.AddModelError("", "An error occurred while registering. Please try again.");
+                }
+                catch (Exception ex)
+                {
+                    _accountLogger.LogError($"Exception: {ex.Message}");
+                    ModelState.AddModelError("", "An unexpected error occurred. Please try again.");
                 }
             }
-
             return View(model);
         }
         [HttpGet]
@@ -94,20 +110,19 @@ namespace ABC_Retail_v3.Controllers
         {
             if (ModelState.IsValid)
             {
-                CreateTableAsync("CraftUsers");
-                var tableClient = _tableServiceClient.GetTableClient("CraftUsers");
-                var users = await tableClient.GetEntityIfExistsAsync<CraftUsers>(model.Email, model.Email);
                 try
                 {
-                    if (users != null)
-                    {
+                    // Call Azure Function to retrieve user data
+                    var user = await _azureFunctionService.GetUserAsync(model.Email, model.Email);
 
-                        
-                        if (users.Value.Password== model.Password)
+                    if (user != null)
+                    {
+                        // Verify the password
+                        var verificationResult = _passwordHasher.VerifyHashedPassword(user, user.Password, model.Password);
+                        if (verificationResult == PasswordVerificationResult.Success)
                         {
-                            // Set session or authentication ticket (or use Identity if integrated)
-                            //HttpContext.Session.SetString("CraftUsers", user.Value.RowKey);
-                            _accountLogger.LogInformation("User Logged In");
+                            // Implement authentication logic (e.g., set cookies, JWT tokens)
+                            _accountLogger.LogInformation($"User {model.Email} logged in successfully.");
 
                             return RedirectToAction("Our_Work", "Home");
                         }
@@ -119,20 +134,17 @@ namespace ABC_Retail_v3.Controllers
                     else
                     {
                         ModelState.AddModelError("", "User not found. Please check your email.");
-                    } 
-
-
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                }
-                catch (StorageException ex)
-                {
-                    Console.WriteLine($"Error code: {ex.RequestInformation.HttpStatusCode}");
-                    Console.WriteLine($"Error message: {ex.Message}");
-                    if (ex.RequestInformation.ExtendedErrorInformation != null)
-                    {
-                        Console.WriteLine($"Request URL: {ex.RequestInformation.ExtendedErrorInformation.ErrorMessage}");
                     }
-                    ModelState.AddModelError("", "An error occurred while retrieving your profile. Please try again.");
+                }
+                catch (HttpRequestException ex)
+                {
+                    _accountLogger.LogError($"HTTP Request error: {ex.Message}");
+                    ModelState.AddModelError("", "An error occurred while logging in. Please try again.");
+                }
+                catch (Exception ex)
+                {
+                    _accountLogger.LogError($"Exception: {ex.Message}");
+                    ModelState.AddModelError("", "An unexpected error occurred. Please try again.");
                 }
             }
 

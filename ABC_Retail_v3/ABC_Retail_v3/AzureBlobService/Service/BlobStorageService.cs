@@ -10,7 +10,6 @@ public class BlobStorageService : IBlobStorageService
     public BlobStorageService(string connectionString)
     {
         var blobServiceClient = new BlobServiceClient(connectionString);
-        //create a blob storage if it doesn't exist
         _blobContainerClient = blobServiceClient.GetBlobContainerClient("productimages");
         _blobContainerClient.CreateIfNotExists();
     }
@@ -26,10 +25,24 @@ public class BlobStorageService : IBlobStorageService
         }
         catch (Exception ex)
         {
-            // Log the exception or handle it accordingly
             Console.WriteLine($"Error uploading file to blob storage: {ex.Message}");
-            throw; // Optionally rethrow the exception if you want it to propagate
+            throw;
         }
 
+    }
+
+    public async Task<Stream> DownloadFileAsync(string fileName)
+    {
+        try
+        {
+            var blobClient = _blobContainerClient.GetBlobClient(fileName);
+            var download = await blobClient.DownloadAsync();
+            return download.Value.Content;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error downloading file from blob storage: {ex.Message}");
+            throw;
+        }
     }
 }

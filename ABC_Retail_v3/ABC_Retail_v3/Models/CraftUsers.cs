@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Azure;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Azure;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Microsoft.CodeAnalysis.Scripting;
-using Org.BouncyCastle.Crypto.Generators;
-using System.Web.Helpers;
-using Azure.Data.Tables;
+using Microsoft.WindowsAzure.Storage.Table;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.WindowsAzure.Storage;
+
 
 namespace ABC_Retail_v3.Models
 {
@@ -60,9 +57,11 @@ namespace ABC_Retail_v3.Models
 
         [ValidateNever]
         public IEnumerable<SelectListItem> RoleList { get; set; }
+        DateTimeOffset ITableEntity.Timestamp { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        string ITableEntity.ETag { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public CraftUsers()
         {
-            // Example: Partition by Category and RowKey by ProductId or a unique identifier
             PartitionKey = Email;
             RowKey = Guid.NewGuid().ToString();
         }
@@ -74,6 +73,16 @@ namespace ABC_Retail_v3.Models
 
             if (!Regex.IsMatch(Password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$"))
                 throw new ArgumentException("Password must contain uppercase, lowercase, number, and special character.");
+        }
+
+        public void ReadEntity(IDictionary<string, EntityProperty> properties, OperationContext operationContext)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDictionary<string, EntityProperty> WriteEntity(OperationContext operationContext)
+        {
+            throw new NotImplementedException();
         }
 
         public enum UserRole

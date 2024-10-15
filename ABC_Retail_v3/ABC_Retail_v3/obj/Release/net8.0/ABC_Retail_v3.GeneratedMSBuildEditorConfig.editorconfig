@@ -1,0 +1,159 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ABC_Retail_v3
+build_property.RootNamespace = ABC_Retail_v3
+build_property.ProjectDir = C:\Users\tmash\source\repos\GitHub\ABC_Retail\ABC_Retail_v7\ABC_Retail_v3\ABC_Retail_v3\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\tmash\source\repos\GitHub\ABC_Retail\ABC_Retail_v7\ABC_Retail_v3\ABC_Retail_v3
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/AppRoles/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwUm9sZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/AppRoles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwUm9sZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Carts/Check_Out.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcQ2hlY2tfT3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Carts/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Carts/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Carts/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Carts/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Carts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Home/About_Us.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dF9Vcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Home/Contact_Us.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0X1VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Home/Our_Work.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxPdXJfV29yay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Home/UploadFile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGxvYWRGaWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Home/UploadProductImage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGxvYWRQcm9kdWN0SW1hZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Products/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Products/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Products/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Products/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Products/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Transactions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Transactions/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Transactions/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Transactions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Transactions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmash/source/repos/GitHub/ABC_Retail/ABC_Retail_v7/ABC_Retail_v3/ABC_Retail_v3/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-hpbfl3pip3

@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "appInsights1": {
+      "type": "appInsights"
+    },
+    "secrets1": {
+      "type": "secrets"
+    },
+    "storage2": {
+      "type": "storage",
+      "connectionId": "DefaultEndpointsProtocol=https;AccountName=abcdb;AccountKey=9s2Ze:6LC3CqZC6POmRyAlk2sh9xT0dQxwRJq9sKHbaDaVo1FEA1D1KhTIqxjS6+y6N1wBOZ6Hv4+AStlA4TUw==;TableEndpoint=https:::abcdb.table.core.windows.net",
+      "dynamicId": null
+    },
+    "storage1": {
+      "type": "storage",
+      "connectionId": "AzureWebJobsStorage"
+    }
+  }
+}

@@ -1,3 +1,4 @@
+using System;
 using ABC_Retail_v3.Models;
 using Azure;
 using Azure.Data.Tables;
@@ -10,7 +11,11 @@ using Azure.Storage.Blobs;
 using System.IO;
 using ABC_Retail_v3.AzureBlobService.Service;
 using ABC_Retail_v3.AzureBlobService.Interface;
-
+using ABC_Retail_v3.AzureStorageService.Service;
+using ABC_Retail_v3.AzureStorageService.Interface;
+using Azure.Storage.Queues;
+using Azure.Storage.Queues.Models;
+using ABC_Retail_v3.AzureQueueService.Interface;
 
 
 namespace ABC_Retail_v3.Controllers
@@ -20,12 +25,26 @@ namespace ABC_Retail_v3.Controllers
         private readonly TableServiceClient _tableServiceClient;
         private readonly ILogger<HomeController> _accountLogger;
         private readonly IBlobStorageService _blobStorageService;
+        private readonly IFileStorageService _fileStorageService;
+        private readonly IQueueStorageService _queueStorageService;
+        private const string conn = "DefaultEndpointsProtocol=https;AccountName=abcdb;AccountKey=9s2Ze/6LC3CqZC6POmRyAlk2sh9xT0dQxwRJq9sKHbaDaVo1FEA1D1KhTIqxjS6+y6N1wBOZ6Hv4+AStlA4TUw==;QueueEndpoint=https://abcdb.queue.core.windows.net";
+        private const string qname = "registeruser";
 
-        public HomeController(ILogger<HomeController> logger, TableServiceClient tableServiceClient, IBlobStorageService blobStorageService)
+        private readonly QueueClient queueClient = new QueueClient(conn, qname);
+
+        public HomeController(ILogger<HomeController> logger, TableServiceClient tableServiceClient, IBlobStorageService blobStorageService, IFileStorageService fileStorageService,
+    IQueueStorageService queueStorageService)
         {
             _tableServiceClient = tableServiceClient;
             _accountLogger = logger;
             _blobStorageService = blobStorageService;
+            _fileStorageService = fileStorageService;
+            _queueStorageService = queueStorageService;
+        }
+
+        public void qCreate() { 
+           queueClient.CreateIfNotExists();
+           return;
         }
         public IActionResult About_Us()
         {
@@ -41,8 +60,14 @@ namespace ABC_Retail_v3.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult UploadFile()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public async Task<IActionResult> UploadProductImage(IFormFile file)
+        public async Task<IActionResult> UploadFile(IFormFile file)
         {
             try
             {
@@ -51,8 +76,16 @@ namespace ABC_Retail_v3.Controllers
                     using (var stream = file.OpenReadStream())
                     {
                         var fileName = file.FileName;
-                        var blobUrl = await _blobStorageService.UploadFileAsync(fileName, stream);
-                        ViewData["BlobUrl"] = blobUrl;
+                        var fileUrl = await _fileStorageService.UploadFileAsync(fileName, stream);
+                        ViewData["FileUrl"] = fileUrl;
+                        try {
+                            qCreate();
+                            string message = "File Uploaded - "+ fileName;
+                            queueClient.SendMessage(message);
+                            _accountLogger.LogInformation($"Message added: {message}");
+                        } catch (Exception ex) {
+                            throw;
+                        }
                     }
                 }
                 else
@@ -65,10 +98,74 @@ namespace ABC_Retail_v3.Controllers
             {
                 // Log the exception and show an error message to the user
                 Console.WriteLine($"Error in UploadProductImage: {ex.Message}");
+                _accountLogger.LogInformation($"Error in UploadProductImage: {ex.Message}");
                 ViewData["Error"] = "An error occurred while uploading the file. Please try again.";
             }
 
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> UploadProductImage(IFormFile file)
+        {
+            try
+            {
+                if (file != null && file.Length > 0)
+                {
+                    using (var stream = file.OpenReadStream())
+                    {
+                        var fileName = file.FileName;
+                        var blobUrl = await _blobStorageService.UploadFileAsync(fileName, stream);
+                        ViewData["BlobUrl"] = blobUrl;
+                        try
+                        {
+                            qCreate();
+                            string message = "Image Uploaded - "+ fileName;
+                            queueClient.SendMessage(message);
+                            _accountLogger.LogInformation($"Message added: {message}");
+                        }
+                        catch (Exception ex)
+                        {
+                            throw;
+                        }
+                    }
+                }
+                else
+                {
+                    // Handle the case where no file was uploaded
+                    ViewData["Error"] = "No file selected for upload.";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception and show an error message to the user
+                Console.WriteLine($"Error in UploadProductImage: {ex.Message}");
+                _accountLogger.LogInformation($"Error in UploadProductImage: {ex.Message}");
+                ViewData["Error"] = "An error occurred while uploading the file. Please try again.";
+            }
+
+            return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> DownloadProductImage(string fileName)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(fileName))
+                {
+                    var stream = await _blobStorageService.DownloadFileAsync(fileName);
+                    return File(stream, "application/octet-stream", fileName);
+                }
+                else
+                {
+                    return BadRequest("Filename is missing.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in DownloadProductImage: {ex.Message}");
+                _accountLogger.LogError($"Error in DownloadProductImage: {ex.Message}");
+                return StatusCode(500, "An error occurred while downloading the file.");
+            }
         }
         public async Task<IActionResult> Our_Work(string search)
         {
@@ -86,11 +183,24 @@ namespace ABC_Retail_v3.Controllers
             catch (RequestFailedException ex)
             {
                 Console.WriteLine($"Error fetching users: {ex.Message}");
+                _accountLogger.LogInformation($"Error fetching users: {ex.Message}");
                 return StatusCode(500, "Error retrieving users.");
             }
 
             return View(craftProducts.ToList());
 
+        }
+        private async Task EnqueueMessageAsync(string message)
+        {
+            try
+            {
+                await _queueStorageService.SendMessageAsync(message);
+                _accountLogger.LogInformation($"Message added to queue: {message}");
+            }
+            catch (Exception ex)
+            {
+                _accountLogger.LogError($"Failed to enqueue message: {ex.Message}");
+            }
         }
 
         //        [HttpPost]

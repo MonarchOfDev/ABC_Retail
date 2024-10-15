@@ -3,24 +3,23 @@
   "WorkspaceRootPath": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6442F106-5A35-4736-A16B-8246C8F2BCBA}|ABC_Retail_v3\\ABC_Retail_v3.csproj|c:\\users\\tmash\\source\\repos\\github\\abc_retail\\abc_retail_v3\\abc_retail_v3\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{6442F106-5A35-4736-A16B-8246C8F2BCBA}|ABC_Retail_v3\\ABC_Retail_v3.csproj|solutionrelative:abc_retail_v3\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tmash\\.nuget\\packages\\microsoft.net.sdk.functions\\4.4.1\\build\\Microsoft.NET.Sdk.Functions.Build.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6442F106-5A35-4736-A16B-8246C8F2BCBA}|ABC_Retail_v3\\ABC_Retail_v3.csproj|c:\\users\\tmash\\source\\repos\\github\\abc_retail\\abc_retail_v3\\abc_retail_v3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6442F106-5A35-4736-A16B-8246C8F2BCBA}|ABC_Retail_v3\\ABC_Retail_v3.csproj|solutionrelative:abc_retail_v3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6442F106-5A35-4736-A16B-8246C8F2BCBA}|ABC_Retail_v3\\ABC_Retail_v3.csproj|c:\\users\\tmash\\source\\repos\\github\\abc_retail\\abc_retail_v3\\abc_retail_v3\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6442F106-5A35-4736-A16B-8246C8F2BCBA}|ABC_Retail_v3\\ABC_Retail_v3.csproj|solutionrelative:abc_retail_v3\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6442F106-5A35-4736-A16B-8246C8F2BCBA}|ABC_Retail_v3\\ABC_Retail_v3.csproj|c:\\users\\tmash\\source\\repos\\github\\abc_retail\\abc_retail_v3\\abc_retail_v3\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6442F106-5A35-4736-A16B-8246C8F2BCBA}|ABC_Retail_v3\\ABC_Retail_v3.csproj|solutionrelative:abc_retail_v3\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6442F106-5A35-4736-A16B-8246C8F2BCBA}|ABC_Retail_v3\\ABC_Retail_v3.csproj|c:\\users\\tmash\\source\\repos\\github\\abc_retail\\abc_retail_v3\\abc_retail_v3\\views\\home\\our_work.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6442F106-5A35-4736-A16B-8246C8F2BCBA}|ABC_Retail_v3\\ABC_Retail_v3.csproj|solutionrelative:abc_retail_v3\\views\\home\\our_work.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{CA0545FA-D4C0-4617-84AB-2F91017AD598}|ABCRetail_Functions_v9\\ABCRetail_Functions_v9.csproj|c:\\users\\tmash\\source\\repos\\github\\abc_retail\\abc_retail_v3\\abcretail_functions_v9\\storetoazuretables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA0545FA-D4C0-4617-84AB-2F91017AD598}|ABCRetail_Functions_v9\\ABCRetail_Functions_v9.csproj|solutionrelative:abcretail_functions_v9\\storetoazuretables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6442F106-5A35-4736-A16B-8246C8F2BCBA}|ABC_Retail_v3\\ABC_Retail_v3.csproj|c:\\users\\tmash\\source\\repos\\github\\abc_retail\\abc_retail_v3\\abc_retail_v3\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6442F106-5A35-4736-A16B-8246C8F2BCBA}|ABC_Retail_v3\\ABC_Retail_v3.csproj|solutionrelative:abc_retail_v3\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CA0545FA-D4C0-4617-84AB-2F91017AD598}|ABCRetail_Functions_v9\\ABCRetail_Functions_v9.csproj|c:\\users\\tmash\\source\\repos\\github\\abc_retail\\abc_retail_v3\\abcretail_functions_v9\\local.settings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CA0545FA-D4C0-4617-84AB-2F91017AD598}|ABCRetail_Functions_v9\\ABCRetail_Functions_v9.csproj|solutionrelative:abcretail_functions_v9\\local.settings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,45 +29,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 290,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABC_Retail_v3\\appsettings.json",
-              "RelativeDocumentMoniker": "ABC_Retail_v3\\appsettings.json",
-              "ToolTip": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABC_Retail_v3\\appsettings.json*",
-              "RelativeToolTip": "ABC_Retail_v3\\appsettings.json*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-12T16:36:31.781Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Our_Work.cshtml",
-              "DocumentMoniker": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABC_Retail_v3\\Views\\Home\\Our_Work.cshtml",
-              "RelativeDocumentMoniker": "ABC_Retail_v3\\Views\\Home\\Our_Work.cshtml",
-              "ToolTip": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABC_Retail_v3\\Views\\Home\\Our_Work.cshtml",
-              "RelativeToolTip": "ABC_Retail_v3\\Views\\Home\\Our_Work.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACcAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-12T14:51:10.594Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABC_Retail_v3\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "ABC_Retail_v3\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABC_Retail_v3\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "ABC_Retail_v3\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAADwvzcAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T14:29:34.23Z",
+              "Title": "Microsoft.NET.Sdk.Functions.Build.targets",
+              "DocumentMoniker": "C:\\Users\\tmash\\.nuget\\packages\\microsoft.net.sdk.functions\\4.4.1\\build\\Microsoft.NET.Sdk.Functions.Build.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\.nuget\\packages\\microsoft.net.sdk.functions\\4.4.1\\build\\Microsoft.NET.Sdk.Functions.Build.targets",
+              "ToolTip": "C:\\Users\\tmash\\.nuget\\packages\\microsoft.net.sdk.functions\\4.4.1\\build\\Microsoft.NET.Sdk.Functions.Build.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\.nuget\\packages\\microsoft.net.sdk.functions\\4.4.1\\build\\Microsoft.NET.Sdk.Functions.Build.targets",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAiwB8AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2024-10-15T12:13:57.738Z",
               "EditorCaption": ""
             },
             {
@@ -79,44 +56,45 @@
               "RelativeDocumentMoniker": "ABC_Retail_v3\\Program.cs",
               "ToolTip": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABC_Retail_v3\\Program.cs",
               "RelativeToolTip": "ABC_Retail_v3\\Program.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAYwCcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T13:03:33.362Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "0b2d030a-91bd-4958-a8f0-3a1bcbb9e275",
-        "Display": 0,
-        "X": 537,
-        "Y": 91,
-        "Width": 643,
-        "Height": 682,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
+              "WhenOpened": "2024-10-15T11:48:18.624Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABC_Retail_v3\\appsettings.json",
+              "RelativeDocumentMoniker": "ABC_Retail_v3\\appsettings.json",
+              "ToolTip": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABC_Retail_v3\\appsettings.json",
+              "RelativeToolTip": "ABC_Retail_v3\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-15T11:46:34.074Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABC_Retail_v3\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "ABC_Retail_v3\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABC_Retail_v3\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "ABC_Retail_v3\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAD4v3QAAAAYAAAAAAAAAA==",
+              "Title": "local.settings.json",
+              "DocumentMoniker": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABCRetail_Functions_v9\\local.settings.json",
+              "RelativeDocumentMoniker": "ABCRetail_Functions_v9\\local.settings.json",
+              "ToolTip": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABCRetail_Functions_v9\\local.settings.json",
+              "RelativeToolTip": "ABCRetail_Functions_v9\\local.settings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-15T10:58:27.923Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StoreToAzureTables.cs",
+              "DocumentMoniker": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABCRetail_Functions_v9\\StoreToAzureTables.cs",
+              "RelativeDocumentMoniker": "ABCRetail_Functions_v9\\StoreToAzureTables.cs",
+              "ToolTip": "C:\\Users\\tmash\\source\\repos\\GitHub\\ABC_Retail\\ABC_Retail_v3\\ABCRetail_Functions_v9\\StoreToAzureTables.cs",
+              "RelativeToolTip": "ABCRetail_Functions_v9\\StoreToAzureTables.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T06:03:15.106Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-15T09:31:18.201Z"
             }
           ]
         }
